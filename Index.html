@@ -1,39 +1,79 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script src="./scripts/jquery-3.2.1.min.js"></script>
-    <script src="./scripts/script.js" charset="utf-8"></script>
-    <title></title>
-  </head>
-  <body>
+<head>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
 
-    <div id="toolbarDiv" style ="display:none"></div>
-    <div id="openseadragon1" style="width: 800px; height: 600px;"></div>
-    <p id="lisence"></p>
+  <img class="bg" src="img/bg3.png" usemap="#planetmap">
 
-  <script>//getting the copyrights from json
-    var url = "http://iiif.nli.org.il/IIIFv21/FL53590958/info.json";
+  <map name="planetmap">
+    <area id="Jerusalem" shape="rect" coords="930,445,1020,470" data-toggle="modal" data-target="#exampleModal">
+    <area id="Tel-Aviv" shape="rect" coords="880,350,978,400" data-toggle="modal" data-target="#exampleModal">
+    <area id="Haifa" shape="rect" coords="930,210,1000,250" data-toggle="modal" data-target="#exampleModal">
+  </map>
 
-    $.getJSON(url , function(result) {
-    $("#lisence").append(result.attribution)
-    })
-  </script>
+<div id="cont">
 
-  <script src="./openseadragon/openseadragon.min.js"></script>
-  <script type="text/javascript">
-      var viewer = OpenSeadragon({
-          id: "openseadragon1",
-          prefixUrl: "./openseadragon/images/",
-          preserveViewport: true,
-          visibilityRatio:    1,
-          minZoomLevel:       1,
-          defaultZoomLevel:   1,
-          toolbar:       "toolbarDiv",
-          sequenceMode:       true,
-          tileSources: "http://iiif.nli.org.il/IIIFv21/FL53590958/info.json"
-      });
 
-  </script>
-  </body>
+<input id="searchbox" class="name" type="text" placeholder="חפש או בחר מיקום...">
+
+
+<ul>
+    <li id="facebook">
+        <label for='radio1'><img id="facebookThumbnail" src="img/facebookDisabled.png" /></label>
+    </li>
+    <li id="twitter">
+        <label for='radio2'><img id="twitterThumbnail" src="img/twitterDisabled.png" /></label>
+    </li>
+    <li id="instagram">
+        <label for='radio2'><img id="instagramThumbnail" src="img/instagramDisabled.png" /></label>
+    </li>
+</ul>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="year">2017  </div>
+        <div class="details">
+            <img class="rounded-circle icon" src="img/icon.png" />
+            <text class="author">הספריה הלאומית</text><br />
+            <text class="date">2017</text>
+        </div>
+
+        <div id="toolbarDiv" style ="display:none"></div>
+        <div id="openseadragon1" style="width: 450px; height: 350px;"></div>
+        <p id="lisence"></p>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<img class="logo" src="img/logo.png" />
+</div>
+
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+//getting the copyrights from json
+  var url = "http://iiif.nli.org.il/IIIFv21/FL53590958/info.json";
+
+  $.getJSON(url , function(result) {
+  $("#lisence").append(result.attribution)
+  })
+</script>
+
+<script src="./openseadragon/openseadragon.min.js"></script>
+</body>
 </html>
