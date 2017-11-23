@@ -64,12 +64,15 @@ var contentType, Destination;
 
    $( "#Jerusalem" ).click(function() {
      Destination = "Jerusalem";
+     createStory();
    });
    $( "#Tel-Aviv" ).click(function() {
      Destination = "Tel-Aviv";
+     createStory();
    });
    $( "#Haifa" ).click(function() {
      Destination = "Haifa";
+     createStory();
    });
 
 
@@ -85,6 +88,7 @@ $('#searchbox').keypress(function (e) {
       if (($("#searchbox").val() == "תל אביב")||($("#searchbox").val() == "תל-אביב")){
         Destination = "Tel-Aviv";
       }
+      createStory();
       $("#exampleModal").modal()
     }
     return false;    //<---- Add this line
@@ -95,3 +99,21 @@ $('.bg').on('dragstart', function(event) { event.preventDefault(); });
 
 //runs after everything is rendered.
 $( "#facebook" ).click();
+
+
+function createStory(){
+  $.get( "http://10.185.1.31:2000/map/"+Destination, function( data ) {
+
+    viewer = OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "./openseadragon/images/",
+        preserveViewport: true,
+        visibilityRatio:    1,
+        minZoomLevel:       1,
+        defaultZoomLevel:   1,
+        toolbar:       "toolbarDiv",
+        sequenceMode:       true,
+        tileSources: data.infoUrl
+    });
+  });
+}
