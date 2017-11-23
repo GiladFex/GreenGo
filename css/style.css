@@ -116,6 +116,38 @@ box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
   background-color: #fafafa;
 }
 
+.modal-lg {
+    max-width: 485px !important;
+    height: 90% !important;
+}
+
 .modal-body{
+  text-align: right;
+}
+
+.author, .date{
+  font-family: arial;
+  padding-right: 10px;
+}
+
+.author{
+  font-weight: bold;
+}
+.date{
+  color: grey;
+}
+
+.icon{
+  padding-top: 5px;
+  display: inline-block;
+  float: right;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.year{
+  border-bottom: 2px solid grey;
+  padding-bottom: 10px;
   text-align: center;
 }
